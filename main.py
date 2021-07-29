@@ -1,7 +1,69 @@
 import random
 import datetime
 
-# from numpy import floating
+
+
+def init_board():
+    board = {}
+    # the cards that go into the board
+    symb_lib = ["@", "#", "$", "%", "<", "&", ">", "?"]
+    symbs = symb_lib * 2
+    random.shuffle(symbs)
+    # iterate through board
+    for letter in ['a', 'b', 'c', 'd']:        
+        for number in ['1', '2', '3', '4']:
+            board[letter + number] = {}
+            board[letter + number]['Value'] = symbs.pop()
+            board[letter + number]['Matched'] = False
+
+    return board
+
+
+def print_board(board, flipped_cards = []):
+    print(flipped_cards)
+    print("    1   2   3   4")
+    print("  -----------------")
+    for letter in ['a', 'b', 'c', 'd']:
+        print(letter + ' | ', end= "")
+        for number in ['1', '2', '3', '4']:            
+            if (letter + number) in flipped_cards:
+                print(board[letter + number]['Value'] + " | ", end= "")
+            elif board[letter + number]['Matched'] == True:
+                print(board[letter + number]['Value'] + " | ", end= "")
+            else:
+                print("." + " | ", end= "")
+        print("")
+        print("  -----------------")
+
+
+board = init_board()
+
+
+print_board(board, flipped_cards = [])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+""" # from numpy import floating
     
 # main game logic 
 def main():
@@ -110,7 +172,7 @@ def main():
         print("guess again")
 
        
-main()
+main() """
 
 # def flip_card():
 #    for index in row:
