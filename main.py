@@ -1,5 +1,5 @@
 import random
-import datetime
+import time
 
 
 
@@ -92,6 +92,8 @@ def main():
             print("Correct match!")
         else:
             print("No match, please try again")
+
+        time.sleep(2)    
 
 
 
