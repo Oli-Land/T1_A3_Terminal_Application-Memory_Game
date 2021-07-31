@@ -1,4 +1,5 @@
 import random
+from os import system
 import time
 
 
@@ -58,23 +59,27 @@ def is_invalid_input(input):
 
 # main game logic 
 def main():
-
+    
     board = init_board()
+    print_board(board)
 
     input("Press any key to start game...") 
 
     round_count = 0
-
-    print_board(board)     
+         
     
     # while loop for turns here
     while not is_game_finished(board):
+
+        system('clear')
+        print_board(board)
         
         # Flip 1
         current_input_1 = "catch"
         while is_invalid_input(current_input_1):
             current_input_1 = input("Enter coordinates of first selection (a-d)(1-4): ")
 
+        system('clear')
         print_board(board, flipped_cards = [current_input_1])
 
         # Flip 2
@@ -82,6 +87,7 @@ def main():
         while is_invalid_input(current_input_2):
             current_input_2 = input("Enter coordinates of second selection (a-d)(1-4): ")
 
+        system('clear')
         print_board(board, flipped_cards = [current_input_1, current_input_2])
 
         round_count += 1
@@ -93,8 +99,9 @@ def main():
         else:
             print("No match, please try again")
 
-        time.sleep(2)    
+        time.sleep(2)
 
+        
 
 
 
