@@ -35,6 +35,13 @@ def print_board(board, flipped_cards = []):
         print("")
         print("  -----------------")
 
+def is_game_finished(board):
+    for letter in ['a', 'b', 'c', 'd']:        
+        for number in ['1', '2', '3', '4']:
+            if board[letter + number]['Matched'] == False:
+                return False
+    return True
+
 
 
 # main game logic 
@@ -42,33 +49,25 @@ def main():
 
     board = init_board()
 
-    input("Press any key to start game...")
-
-    round_count = 0
-
-    print_board(board)     
-    
     # while loop for turns here
+    while not is_game_finished(board):
+        
+        # Flip 1
+        current_input_1 = input("Enter coordinates of first selection (a-d)(1-4): ")
 
-    # Flip 1    
-    current_input_1 = input("Enter coordinates of first selection (a-d)(1-4): ")
-    print_board(board, flipped_cards = [current_input_1])
+        print_board(board, flipped_cards = [current_input_1])
 
-    # Flip 2
-    current_input_2 = input("Enter coordinates of second selection (a-d)(1-4): ")
-    print_board(board, flipped_cards = [current_input_1, current_input_2])
+        # Flip 2
+        current_input_2 = input("Enter coordinates of second selection (a-d)(1-4): ")
 
-    round_count += 1
+        print_board(board, flipped_cards = [current_input_1, current_input_2])
 
-
-    # check for match
-    if board[current_input_1]['Value'] == board[current_input_2]['Value']:
-        board[current_input_1]['Matched'] = True
-        board[current_input_2]['Matched'] = True
-        print("Correct match!")
-    else:
-        print("No match, please try again")
-
+        if board[current_input_1]['Value'] == board[current_input_2]['Value']:
+            board[current_input_1]['Matched'] = True
+            board[current_input_2]['Matched'] = True
+            print("Correct match!")
+        else:
+            print("No match, please try again")
 
 
 
