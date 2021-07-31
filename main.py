@@ -42,25 +42,49 @@ def is_game_finished(board):
                 return False
     return True
 
-
+def is_invalid_input(input):
+    if input == "catch":
+        return True
+    if len(input) != 2:
+        print("Please enter coordinates as 2 digits (letter,number)")
+        return True
+    elif input[0] not in ['a', 'b', 'c', 'd']:
+        print("Please enter a valid row (a, b, c or d)") 
+        return True
+    elif input[1] not in ['1', '2', '3', '4']:
+        print("Please enter a valid column (1, 2, 3 or 4)")
+        return True
+    return False
 
 # main game logic 
 def main():
 
     board = init_board()
 
+    input("Press any key to start game...") 
+
+    round_count = 0
+
+    print_board(board)     
+    
     # while loop for turns here
     while not is_game_finished(board):
         
         # Flip 1
-        current_input_1 = input("Enter coordinates of first selection (a-d)(1-4): ")
+        current_input_1 = "catch"
+        while is_invalid_input(current_input_1):
+            current_input_1 = input("Enter coordinates of first selection (a-d)(1-4): ")
 
         print_board(board, flipped_cards = [current_input_1])
 
         # Flip 2
-        current_input_2 = input("Enter coordinates of second selection (a-d)(1-4): ")
+        current_input_2 = "catch"
+        while is_invalid_input(current_input_2):
+            current_input_2 = input("Enter coordinates of second selection (a-d)(1-4): ")
 
         print_board(board, flipped_cards = [current_input_1, current_input_2])
+
+        round_count += 1
 
         if board[current_input_1]['Value'] == board[current_input_2]['Value']:
             board[current_input_1]['Matched'] = True
