@@ -105,4 +105,4 @@ User input errors are detected using a function containing conditionals to catch
 
 ## Control Flow Diagram
 
-![](memory%20control%20flow%20diagram.png)
+![](control_flow_diagram.png)
