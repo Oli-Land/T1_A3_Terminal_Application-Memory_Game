@@ -1,13 +1,16 @@
 Help File
 
 System/hardware requirements:
-This application requires Python 3 to be installed. Please enter the following into terminal to check:
+This application was written and tested using wsl ubuntu 20.04. Therefore it is recommended the user runs it in a linux based environment.
+
+Requires Python 3 to be installed. Please enter the following into terminal to check:
 
     python3 --version
 
 
 
-To run the game, enter the following into the bash terminal: 
+
+To run the game, enter the following into the terminal: 
 
     cd assignment
 
@@ -23,7 +26,7 @@ for hard mode:
 
 Dependencies:
 All modules used are native to python 3, and therefore the user may decide to skip the installation step of creating a virtual environment if they wish.
-Otherwise, type the following into the terminal:
+Otherwise, type the following into the terminal before running:
 
     python3 -m venv venv
 
@@ -46,7 +49,7 @@ Card selection - The player inputs their card selection as grid coordinates, for
 
 Pair matching - The game recognises when a selected pair match. The pair will then remain flipped so the player can track their progress. When all pairs are matched, the game ends, printing the total game time and number of rounds taken to finish as the player’s score.
 
-If the user wishes to exit the application:
+If the user wishes to exit the application before game completion:
 Please type “exit” into the terminal during gameplay
 
 
